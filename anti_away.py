@@ -7,7 +7,8 @@ def do_actions(distance: int = 600, left_click: bool = False, press_button: str 
     while True:
         if distance > 0:
             x_direction = randint(-distance, distance)
-            y_direction = randint(-distance, distance)
+            y_distance = (distance ** 2 - x_direction ** 2) ** 0.5
+            y_direction = y_distance * ((-1) ** (randint(0, 1)))
 
             pyautogui.moveRel(x_direction, y_direction, 1)
         
