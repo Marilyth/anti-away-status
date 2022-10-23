@@ -11,9 +11,10 @@ def do_actions(distance: int = 540, left_click: bool = False, press_button: str 
     mouse_position = pyautogui.position()
     current_monitor = None
     for monitor in get_monitors():
-        if monitor.x <= mouse_position.x and monitor.y <= mouse_position.y:
-            if current_monitor is None or monitor.x > current_monitor.x or monitor.y > current_monitor.y:
-                current_monitor = monitor
+        if monitor.x <= mouse_position.x and monitor.x + monitor.width >= mouse_position.x \
+        and monitor.y <= mouse_position.y and monitor.y + monitor.height >= mouse_position.y:
+            current_monitor = monitor
+            break
 
     distance = min(distance, min(current_monitor.height // 2, current_monitor.width // 2))
 
