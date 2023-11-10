@@ -1,3 +1,4 @@
 pyautogui
 typer
 screeninfo
+pytweening
